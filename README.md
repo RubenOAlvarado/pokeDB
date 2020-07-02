@@ -1,2 +1,2 @@
 # pokeDb
-an arangDb database using the foxx microservices
+an arangoDB database using the foxx framework
