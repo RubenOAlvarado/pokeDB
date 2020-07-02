@@ -16,3 +16,8 @@ collectionEdgeNames.forEach(edge => {
     if(!db._collection(edge))
         db._createEdgeCollection(edge);
 });
+
+let collections = [...collectionDocumentNames, ...collectionEdgeNames];
+const exportedCollections = collections.map( collection => module.context.collection(collection));
+
+module.exports = exportedCollections;
