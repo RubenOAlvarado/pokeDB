@@ -1,8 +1,14 @@
 'use strict';
-
 const db = require('@arangodb').db;
+const { DOCNAME } = require('../src/config/utils');
 
-const collectionDocumentNames = ['pokemon', 'trainer'];
+if(!db._collection(DOCNAME))
+    db._createDocumentCollection(DOCNAME);
+
+
+module.exports = module.context.collection(DOCNAME);
+
+/*const collectionDocumentNames = ['pokemon', 'trainer'];
 const collectionEdgeNames = ['battle', 'team'];
 
 //Cargamos los documentos (vertices)
@@ -20,4 +26,4 @@ collectionEdgeNames.forEach(edge => {
 let collections = [...collectionDocumentNames, ...collectionEdgeNames];
 const exportedCollections = collections.map( collection => module.context.collection(collection));
 
-module.exports = exportedCollections;
+module.exports = exportedCollections;*/

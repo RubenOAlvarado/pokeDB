@@ -1,9 +1,16 @@
 {
-    "engines": {
+  "name":"pokemon",
+  "version":"0.0.1-dev",
+  "license":"MIT",
+  "description":"Rest API for pokemon collection",
+  "engines": {
       "arangodb": "^3.0.0"
-    },
-    "main": "index.js",
-    "scripts":{
-        "setup":"scripts/setup.js"
-    }
-  }
+  },
+  "main": "index.js",
+  "scripts":{
+    "setup":"scripts/setup.js"
+  },
+  "tests":[
+    "/__tests__/*.spec.js"
+  ]
+}
