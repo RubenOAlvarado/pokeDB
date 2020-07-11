@@ -1,5 +1,5 @@
 'use strict';
-const db = require('@arangodb').db;
+const {db} = require('@arangodb');
 const { DOCNAME } = require('../src/config/utils');
 
 if(!db._collection(DOCNAME))
