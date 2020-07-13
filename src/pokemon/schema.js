@@ -1,11 +1,10 @@
 'use strict';
 
 const gql = require('graphql-sync');
-const {db} = require('@arangodb');
-const { DOCNAME } = require('../config/utils');
+const { db } = require("@arangodb");
 
-const pokeColl = module.context.collection(DOCNAME);
-
+//exporting queries
+const getPokeByPokedexId = require('../db/queries/getPokeByPokedexId');
 
 let pokemonType;
 
@@ -23,27 +22,27 @@ pokemonType = new gql.GraphQLObjectType({
                 }
             },
             name:{
-                type: new gql.GraphQLString,
+                type: gql.GraphQLString,
                 description: 'The name of the pokemon'
             },
             baseLvl:{
-                type: new gql.GraphQLString,
+                type: gql.GraphQLString,
                 description: 'the level of the pokemon when it was obtain'
             },
             level:{
-                type: new gql.GraphQLString,
+                type: gql.GraphQLString,
                 description: 'the actual level of the pokemon'
             },
             baseExp:{
-                type: new gql.GraphQLString,
+                type: gql.GraphQLString,
                 description: 'the experience of the pokemon when it was obtained'
             },
             exp: {
-                type: new gql.GraphQLString,
+                type: gql.GraphQLString,
                 description: 'the actual exp of the pokemon'
             },
             pokedexId: {
-                type: new gql.GraphQLString,
+                type: gql.GraphQLString,
                 description: 'the id of the pokemon in the pokedex'
             }
         }
@@ -56,6 +55,7 @@ const queryType = new gql.GraphQLObjectType({
         return{
             pokemon:{
                 type: pokemonType,
+                description: 'retrieves a pokemon by his pokedexid',
                 args:{
                     pokedexId:{
                         description: 'the id of the pokemon in the pokedex that you wanna retrieve',
@@ -63,11 +63,7 @@ const queryType = new gql.GraphQLObjectType({
                     } 
                 },
                 resolve(root, args){
-                    return db._query(aqlQuery`
-                        FOR p IN ${pokeColl}
-                            FILTER p.pokedexId == ${req.pathParams.id}
-                            RETURN p
-                        `).toArray()
+                    return db._query(getPokeByPokedexId(args.pokedexId))
                 }
             }
         }
@@ -75,6 +71,6 @@ const queryType = new gql.GraphQLObjectType({
 });
 
 
-module.exports = new gql.GrapQLSchema({
+module.exports = new gql.GraphQLSchema({
     query: queryType
 });
