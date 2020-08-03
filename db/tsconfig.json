@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "lib": ["es7","dom"],
+    "target": "es5",                          /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', or 'ESNEXT'. */
+    "module": "commonjs", 
+    "declaration": false,
+    "sourceMap": false,
+    "rootDir": "./src/",
+
+    "strict": true,                           /* Enable all strict type-checking options. */
+    "noImplicitAny":false,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": false,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+
+    "noUnusedParameters": false,
+    "noUnusedLocals": false,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+
+    "watch": true,
+    
+    "experimentalDecorators": true,        /* Enables experimental support for ES7 decorators. */
+    "emitDecoratorMetadata": true,
+    
+    "outDir": "~/var/lib/arangodb3-apps/_db/_system/pokemon/APP"
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

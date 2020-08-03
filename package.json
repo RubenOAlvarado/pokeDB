@@ -6,6 +6,12 @@
   "author": "RubenOAlvarado <rubenosmaralvarado@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "foxx-cli": "^2.0.0"
-  }
+    "@types/arangodb": "^3.5.6",
+    "@types/joi": "^14.3.4",
+    "@types/node": "^14.0.27",
+    "foxx-cli": "^2.0.0",
+    "type-arango": "^1.3.2",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {}
 }
